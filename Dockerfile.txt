@@ -3,7 +3,7 @@ FROM centos:latest
 #RUN yum upgrade -y
 
 
-RUN yum install -y gcc wget openssl-devel bzip2-devel libffi-devel
+RUN yum install -y wget gcc openssl-devel bzip2-devel  libffi-devel 
 
 MAINTAINER Valentin Vulea "valentin.vulea@gmail.com"
 
@@ -21,9 +21,11 @@ RUN make altinstall
 
 
 #Removes Archive for Installation
-RUN rm /usr/src/Python-3.7.3.tgz
+RUN rm -f /usr/src/Python-3.7.3.tgz
 
+RUN python --version
 RUN python3.7 -V
+
 
 
 #Test din GitHub
