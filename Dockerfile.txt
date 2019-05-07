@@ -1,17 +1,17 @@
 FROM centos:latest
 #RUN yum update -y
 #RUN yum upgrade -y
-#RUN apt-get install -y python3 python-pip python-dev
+RUN apt-get install -y python3 python-pip python-dev
 
 MAINTAINER Valentin Vulea "valentin.vulea@gmail.com"
 
-#COPY ./requirements.txt /app/requirements.txt
+COPY ./requirements.txt /app/requirements.txt
 
-#WORKDIR /app
-#RUN pip install -r requirements.txt
-#COPY . /app
-#ENTRYPOINT [ "python" ]
-#CMD [ "app.py" ]
+WORKDIR /app
+RUN pip install -r requirements.txt
+COPY . /app
+ENTRYPOINT [ "python" ]
+CMD [ "app.py" ]
 
 #Test Comment
 
