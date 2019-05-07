@@ -18,4 +18,5 @@ MAINTAINER Valentin Vulea "valentin.vulea@gmail.com"
 #RUN yum install curl -y
 #RUN yum install vim -y
 
+#Test 2
 #Test Git Repo Update
