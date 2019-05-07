@@ -16,7 +16,9 @@ RUN tar xzf Python-3.7.3.tgz
 
 #Install Python
 RUN cd Python-3.7.3
-RUN ./configure --enable-optimizations
+RUN ./configure
+#RUN ./configure --enable-optimizations
+Run make
 RUN make altinstall
 
 
