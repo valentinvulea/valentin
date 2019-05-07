@@ -1,31 +1,30 @@
 FROM centos:latest
 #RUN yum update -y
 #RUN yum upgrade -y
-RUN yum install -y python36u python36u-libs python36u-devel python36u-pip
-RUN python3.7 -V
+
+
+RUN yum install gcc openssl-devel bzip2-devel libffi-devel
 
 MAINTAINER Valentin Vulea "valentin.vulea@gmail.com"
 
-#Development tools for compilation
-RUN sudo yum groupinstall -y "Development Tools"
+#Download Python 3.7.3
+RUN cd /usr/src
+RUN wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz
 
-#Python Source Files
-RUN wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz
+#Unzip Archive
+tar xzf Python-3.7.3.tgz
 
-
-RUN tar -xJf Python-3.7.3.tar.xz
+#Install Python
 RUN cd Python-3.7.3
-
-#Configuration Script
-RUN ./configure
-
-
-#Compile the program
-RUN make
-RUN make install
+RUN ./configure --enable-optimizations
+RUN make altinstall
 
 
-#Test Comment
+#Removes Archive for Installation
+RUN rm /usr/src/Python-3.7.3.tgz
+
+RUN python3.7 -V
+
 
 #Test din GitHub
 #Test Git Repo Update
