@@ -12,7 +12,7 @@ RUN cd /usr/src
 RUN wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz
 
 #Unzip Archive
-tar xzf Python-3.7.3.tgz
+RUN tar xzf Python-3.7.3.tgz
 
 #Install Python
 RUN cd Python-3.7.3
