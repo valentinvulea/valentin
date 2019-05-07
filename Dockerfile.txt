@@ -3,7 +3,7 @@ FROM centos:latest
 #RUN yum upgrade -y
 
 
-RUN yum install gcc openssl-devel bzip2-devel libffi-devel
+RUN yum install gcc tar openssl-devel bzip2-devel libffi-devel
 
 MAINTAINER Valentin Vulea "valentin.vulea@gmail.com"
 
