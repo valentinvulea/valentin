@@ -25,7 +25,6 @@ RUN make altinstall
 #Removes Archive for Installation
 RUN rm -f /usr/src/Python-3.7.3.tgz
 
-RUN python --version
 RUN python3.7 -V
 
 
