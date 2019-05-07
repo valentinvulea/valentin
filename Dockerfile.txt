@@ -1,22 +1,31 @@
 FROM centos:latest
 #RUN yum update -y
 #RUN yum upgrade -y
-RUN yum install -y python3 python-pip python-dev
+RUN yum install -y python36u python36u-libs python36u-devel python36u-pip
+RUN python3.6 -V
 
 MAINTAINER Valentin Vulea "valentin.vulea@gmail.com"
 
-COPY ./requirements.txt /app/requirements.txt
+#Development tools for compilation
+RUN sudo yum groupinstall -y "Development Tools"
 
-WORKDIR /app
-RUN yum install -r requirements.txt
-COPY . /app
-ENTRYPOINT [ "python" ]
-CMD [ "app.py" ]
+#Python Source Files
+RUN wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz
+
+
+RUN tar -xJf Python-3.7.3.tar.xz
+RUN cd Python-3.7.3
+
+#Configuration Script
+RUN ./configure
+
+
+#Compile the program
+RUN make
+RUN make install
+
 
 #Test Comment
-
-#RUN yum install curl -y
-#RUN yum install vim -y
 
 #Test din GitHub
 #Test Git Repo Update
