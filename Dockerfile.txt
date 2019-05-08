@@ -1,18 +1,35 @@
 FROM centos:latest
+
 #RUN yum update -y
 #RUN yum upgrade -y
 
 
-RUN yum install -y wget gcc openssl-devel bzip2-devel  libffi-devel 
+FROM python:3
+
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD [ "python", "./first-app.py" ]
+
+
+
+
+
+#RUN yum install -y wget gcc openssl-devel bzip2-devel  libffi-devel 
 
 MAINTAINER Valentin Vulea "valentin.vulea@gmail.com"
 
 #Download Python 3.7.3
-RUN cd /usr/src
-RUN wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz
+
+#RUN wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz
+#RUN cd /usr/src
 
 #Unzip Archive
-RUN tar xzf Python-3.7.3.tgz
+#RUN tar xzf Python-3.7.3.tgz
 
 #Install Python
 #RUN cd Python-3.7.3
